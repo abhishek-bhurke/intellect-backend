@@ -27,6 +27,7 @@ app.post('/api/contact', upload.single('file'), async (req, res) => {
         const values = [
             body.whoYouAre,
             body.name,
+            body.companyName,
             body.email,
             body.mobileNumber,
             body.message,
@@ -53,7 +54,7 @@ app.post('/api/contact', upload.single('file'), async (req, res) => {
                 SPREADSHEET_ID,
                 SHEET_NAME,
                 rowNumber,
-                6,
+                7,
                 driveResponse.webViewLink
             );
 
