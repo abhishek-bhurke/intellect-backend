@@ -17,7 +17,7 @@ const googleApiService = new GoogleApiService();
 const SPREADSHEET_ID = '1DbsTJffNWoElWk7x5kgYSNi6w_7xAp6WVWvi5MlfMus';
 const SHEET_NAME = 'Sheet1';
 
-app.use(cors({ origin: 'https://intellectisolutions.com/', credentials: true }));
+app.use(cors({ origin: 'https://intellectisolutions.com', credentials: true }));
 app.use(express.json());
 
 app.post('/api/contact', upload.single('file'), async (req, res) => {
