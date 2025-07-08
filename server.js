@@ -16,8 +16,20 @@ const googleApiService = new GoogleApiService();
 
 const SPREADSHEET_ID = '1DbsTJffNWoElWk7x5kgYSNi6w_7xAp6WVWvi5MlfMus';
 const SHEET_NAME = 'Sheet1';
-
-app.use(cors({ origin: 'https://intellectisolutions.com', credentials: true }));
+const allowedOrigins = [
+    'https://intellectisolutions.com'
+];
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        } else {
+            return callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
 app.use(express.json());
 
 app.post('/api/contact', upload.single('file'), async (req, res) => {
